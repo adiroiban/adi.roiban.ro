@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>
+        Adi Roiban    </title>
+        <link href="http://adi.roiban.ro /atom.xml" rel="self" />
+    
+        <link href="http://adi.roiban.ro/"/>
+    
+        
+    <updated>2012-04-10T17:17:55Z</updated>
+
+    <id>http://adi.roiban.ro/atom.xml</id>
+
+            <entry>
+            <title type="html">Înapoi la pagini statice</title>
+            <author><name>Adi Roiban</name></author>
+            <link href="http://adi.roiban.ro/articles/2012/2012-04-10-inapoi-la-pagini-statice.html"/>
+            <updated>2012-04-10T00:00:00Z</updated>
+            <published>2012-04-10T00:00:00Z</published>
+            <id>http://adi.roiban.ro/articles/2012/2012-04-10-inapoi-la-pagini-statice.html</id>
+            
+            <content type="html">
+                                            </content>
+        </entry>
+     
+            <entry>
+            <title type="html">Monitor the UPS in Ubuntu with Network UPS Tools</title>
+            <author><name>Adi Roiban</name></author>
+            <link href="http://adi.roiban.ro/articles/2011/2011-10-10-nut.html"/>
+            <updated>2011-10-10T00:00:00Z</updated>
+            <published>2011-10-10T00:00:00Z</published>
+            <id>http://adi.roiban.ro/articles/2011/2011-10-10-nut.html</id>
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="english"
+                        label="English" />
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="free-software"
+                        label="Free-Software" />
+            
+            <content type="html">
+                                            </content>
+        </entry>
+     
+            <entry>
+            <title type="html">FLOSSCamp 2011 se apropie</title>
+            <author><name>Adi Roiban</name></author>
+            <link href="http://adi.roiban.ro/articles/2011/2011-08-03-flosscamp-se-apropie.html"/>
+            <updated>2011-08-03T00:00:00Z</updated>
+            <published>2011-08-03T00:00:00Z</published>
+            <id>http://adi.roiban.ro/articles/2011/2011-08-03-flosscamp-se-apropie.html</id>
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="romanian"
+                        label="Romanian" />
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="free-software"
+                        label="Free-Software" />
+            
+            <content type="html">
+                                            </content>
+        </entry>
+     
+            <entry>
+            <title type="html">Vama Veche în extrasezon</title>
+            <author><name>Adi Roiban</name></author>
+            <link href="http://adi.roiban.ro/articles/2011/2011-05-24-vama-veche-in-extrasezon.html"/>
+            <updated>2011-05-24T00:00:00Z</updated>
+            <published>2011-05-24T00:00:00Z</published>
+            <id>http://adi.roiban.ro/articles/2011/2011-05-24-vama-veche-in-extrasezon.html</id>
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="romanian"
+                        label="Romanian" />
+            
+            <content type="html">
+                                            </content>
+        </entry>
+     
+    </feed>

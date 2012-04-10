@@ -3,7 +3,7 @@
 PYTHON="build/bin/python2.7"
 PIP="build/bin/pip"
 HYDE="build/bin/hyde"
-BUILD_FOLDER=build/deploy
+BUILD_FOLDER=.
 
 run:
 	${PYTHON} ${HYDE} gen -r -d ${BUILD_FOLDER}
