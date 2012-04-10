@@ -1179,3 +1179,9 @@ div.aligncenter {
    margin: 0;
 
 }
+
+
+#disqus_thread {
+    margin-bottom: 10px;
+    margin-top: 40px;
+}

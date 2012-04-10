@@ -1,40 +1,3 @@
-{% macro render_main_menu() -%}
-
-{# Set menu item selected if the current resource matches the item in the
-   site's config file or set "Advanced topics" selected for any resources
-   that have the "advanced" folder as their parent.
-#}
-<ul>
-{% for menu_item in menu -%}
-    <li><a {% if (menu_item.url == resource.url) or
-                 (menu_item.title == "Advanced topics"
-                  and resource.node.name == "advanced")
-            %}class="selected"{% endif -%}
-            href="{{ content_url(menu_item.url) }}">{{ menu_item.title }}</a></li>
-{%- endfor %}
-</ul>
-{%- endmacro %}
-
-
-{# Advanced topics macro. Renders navigation at the end of the article. #}
-
-{% macro render_bottom_article_nav() %}
-<div class="bottom_article_nav">
-{% if resource.next_by_index is not none -%}
-    <div class="next"><a href="{{ resource.next_by_index.full_url }}">
-    {{ resource.next_by_index.meta.title_ending|replace("| ", "") }}</a>
-    &gt;</div>
-{%- endif %}
-
-{% if resource.prev_by_index is not none -%}
-    <div class="prev">&lt; <a href="{{ resource.prev_by_index.full_url }}">
-    {{ resource.prev_by_index.meta.title_ending|replace("| ", "") }}</a>
-    </div>
-{%- endif %}
-</div>
-{% endmacro %}
-
-
 {% macro render_badges() %}
 <div class="sidemenu">
   <div class="textwidget">
@@ -49,7 +12,6 @@
 
 
 {% macro render_categories_nav() %}
-
 <div class="sidemenu">
   <h3>Categories</h3>
   <ul>
@@ -67,6 +29,22 @@
   </ul>
 </div>
 {% endmacro %}
+
+{% macro render_comments(res, cls=None) -%}
+{% if resource.meta.comments -%}
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = '{{ resource.meta.disqus }}';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+{%- endif %}
+{%- endmacro %}
 
 
 {% macro render_archives_nav() %}

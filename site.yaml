@@ -99,6 +99,7 @@ meta:
     nodemeta: meta.yaml
     default_block: content
     ga_tracking_code: UA-2942924-1
+    disqus: adiroiban
     skip_navigation: False
 
 

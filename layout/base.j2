@@ -63,7 +63,7 @@
           <p>
           <label for="qsearch">Search:</label>
           <input class="tbox" id="qsearch" type="text" name="s" value="" title="Start typing and hit ENTER" />
-          <input class="btn" alt="Search" type="image"  title="Search" src="http://adi.roiban.ro/wp-content/themes/keep-it-simple/images/search.gif" />
+          <input class="btn" alt="Search" type="image"  title="Search" src="{{ media_url('img/search.gif') }}" />
           </p>
       </form>
     </div>
@@ -122,6 +122,11 @@
       </div>
     {% endif %}
     {% endblock navigation %}
+
+
+    {% from "macros.j2" import render_comments with context %}
+    {{ render_comments(res) }}
+
 
       </div>
       <!-- main ends -->

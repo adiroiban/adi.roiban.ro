@@ -1,2 +1,3 @@
 skip_navigation: False
 extends: article.j2
+comments: true
