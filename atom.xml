@@ -7,7 +7,7 @@
         <link href="http://adi.roiban.ro/"/>
     
         
-    <updated>2012-04-10T22:38:40Z</updated>
+    <updated>2012-04-10T23:11:31Z</updated>
 
     <id>http://adi.roiban.ro/atom.xml</id>
 
@@ -98,6 +98,99 @@ UPS and displaying the status via a weg page.
             
             <summary>
                             M-am mutat cu birou din dormitor în Vama Veche și voi sta pe aici încă cel puțin 3 săptămâni. Fiind extrasezon, Vama Veche e cu totul altfel, e liniște, nu e lume, afară nu e chiar așa de cald. E chiar foarte fain.
+                          </summary>
+
+            <content type="html">
+                          </content>
+
+        </entry>
+     
+            <entry>
+            <title type="html">OpenID – First Step towards Single Sign-On</title>
+            <author><name>Adi Roiban</name></author>
+            <link href="http://adi.roiban.ro/articles/2007/2007-03-30-openid.html"/>
+            <updated>2007-03-30T00:00:00Z</updated>
+            <published>2007-03-30T00:00:00Z</published>
+            <id>/articles/2007/2007-03-30-openid.html</id>
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="english"
+                        label="English" />
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="free-software"
+                        label="Free-Software" />
+            
+            
+            <summary>
+                            As I’m a big fan of security, single sign-on and single sign-up, I am very happy to announce you that my site is OpenID enabled. Most probably not many of you have heard about OpenID. I will tell you it provides single sign-up, but after having readthis ...
+                          </summary>
+
+            <content type="html">
+                          </content>
+
+        </entry>
+     
+            <entry>
+            <title type="html">Help translate Ubuntu into your language!</title>
+            <author><name>Adi Roiban</name></author>
+            <link href="http://adi.roiban.ro/articles/2007/2007-03-20-help-translate-ubuntu.html"/>
+            <updated>2007-03-20T00:00:00Z</updated>
+            <published>2007-03-20T00:00:00Z</published>
+            <id>/articles/2007/2007-03-20-help-translate-ubuntu.html</id>
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="english"
+                        label="English" />
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="free-software"
+                        label="Free-Software" />
+            
+            
+            <summary>
+                            You don’t need to be a good programmer or posses advance knowledge in operating systems to help the development of free software. Right now many free software application are unaccessible to people, who don’t know the English language. Especially young ...
+                          </summary>
+
+            <content type="html">
+                          </content>
+
+        </entry>
+     
+            <entry>
+            <title type="html">Looking for a team</title>
+            <author><name>Adi Roiban</name></author>
+            <link href="http://adi.roiban.ro/articles/2007/2007-03-05-looking-for-a-team.html"/>
+            <updated>2007-03-05T00:00:00Z</updated>
+            <published>2007-03-05T00:00:00Z</published>
+            <id>/articles/2007/2007-03-05-looking-for-a-team.html</id>
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="english"
+                        label="English" />
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="free-software"
+                        label="Free-Software" />
+            
+            
+            <summary>
+                            Last 2 months I have been working on porting various free software application from GNU/Linux to all kind of Unix and Unix-Like operating system. The work went very well, the project evolved and now there is a need for another person to work at this ...
+                          </summary>
+
+            <content type="html">
+                          </content>
+
+        </entry>
+     
+            <entry>
+            <title type="html">Starting point</title>
+            <author><name>Adi Roiban</name></author>
+            <link href="http://adi.roiban.ro/articles/2007/2007-02-13-starting-point.html"/>
+            <updated>2007-02-13T00:00:00Z</updated>
+            <published>2007-02-13T00:00:00Z</published>
+            <id>/articles/2007/2007-02-13-starting-point.html</id>
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="english"
+                        label="English" />
+            
+            
+            <summary>
+                            I am not planning to start a daily bloging routine. I will use this blog engine just to manage my webpages from the top right menu, and the blog post will be like news articles (regarding page updates). I plan to keep a page about my bookshelf, so if you ...
                           </summary>
 
             <content type="html">
