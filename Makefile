@@ -3,11 +3,11 @@
 PYTHON="build/bin/python2.7"
 PIP="build/bin/pip"
 HYDE="build/bin/hyde"
-
+BUILD_FOLDER=build/deploy
 
 run:
-	${PYTHON} ${HYDE} gen -r -d build/deploy
-	${PYTHON} ${HYDE} serve -d build/deploy
+	${PYTHON} ${HYDE} gen -r -d ${BUILD_FOLDER}
+	${PYTHON} ${HYDE} serve -d ${BUILD_FOLDER}
 
 
 deps:
@@ -18,4 +18,4 @@ deps:
 
 
 clean:
-	rm -rf build/deploy
+	rm -rf ${BUILD_FOLDER}
