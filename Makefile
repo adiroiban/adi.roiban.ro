@@ -21,5 +21,10 @@ deps:
 		-e 'git://github.com/adiroiban/hyde.git#egg=hyde'
 
 
+publish: generate
+	git commit -a 'Update static files.'
+	git push origin
+
+
 clean:
 	rm -rf ${BUILD_FOLDER}
