@@ -30,8 +30,12 @@
 </div>
 {% endmacro %}
 
-{% macro render_comments(res, cls=None) -%}
+
+{% macro render_comments(resource, cls=None) -%}
 {% if resource.meta.comments -%}
+<script type="text/javascript">
+  var disqus_identifier = '{{ resource.url }}';
+</script>
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = '{{ resource.meta.disqus }}';

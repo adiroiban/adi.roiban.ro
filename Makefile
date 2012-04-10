@@ -26,7 +26,7 @@ publish: generate
 	git push origin
 
 
-upload:
+upload: generate
 	rsync -aqcz -e 'ssh' --exclude-from=rsync.exclude ./ ${DESTINATION}
 
 clean:

@@ -1,5 +1,8 @@
 .git/
 build/
 content/
+layout/
+rsync.exclude
 .gitignore
 *.yaml
+.hyde_deps
