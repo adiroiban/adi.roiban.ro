@@ -1,0 +1,112 @@
+mode: development
+media_root: media
+media_url: /media
+base_url: /
+# If your site is nested inside of a bigger one, you can use media_url and
+# base_url to properly generate links on your site. For example, if your URL
+# will be some.domain.com/starter/, use:
+#   media_url: /starter/media
+#   base_url: /starter/
+
+
+template: hyde.ext.templates.jinja.Jinja2Template
+
+
+plugins:
+    - hyde.ext.plugins.meta.MetaPlugin
+    - hyde.ext.plugins.auto_extend.AutoExtendPlugin
+    # Plugins needed for the advances section.
+    - hyde.ext.plugins.sorter.SorterPlugin
+    - hyde.ext.plugins.grouper.GrouperPlugin
+    - hyde.ext.plugins.tagger.TaggerPlugin
+
+context:
+    data:
+        website:
+            name: Adi Roiban
+            author: Adi Roiban
+            description: Adi Roiban (aka Roiban Mircea Adrian) personal blog.
+            tagline: Who wipes ?
+            url: http://adi.roiban.ro
+            atom:
+                name: RSS Feeds
+                url: atom.xml
+            menu:
+                -
+                    name: Home
+                    type: page
+                    url: index.html
+                -
+                    name: About me
+                    type: page
+                    url: about.html
+                -
+                    name: My belief
+                    type: page
+                    url: belief.html
+
+
+meta:
+    nodemeta: meta.yaml
+    extends: base.j2
+    default_block: content
+    ga_tracking_code: XX-XXXXXXXX-X
+    skip_navigation: False
+
+
+sorter:
+    name:
+        attr: name
+        filters:
+            source_file.kind: html
+            # You can include only files from a certain folder.
+            #resource.node: (name of the folder)
+
+    file_type:
+        attr: 
+            - source_file.kind
+            - source_file.size
+
+    created:
+        attr: meta.created
+        filters:
+            source_file.kind: html
+
+    latest:
+        attr: meta.updated
+        filters:
+            source_file.kind: html
+            meta.skip_navigation: False
+        reverse: True
+
+
+grouper:
+    category:
+        sorter: name
+        description: Post cagetory
+        groups:
+            - name: English
+              description: Posts in English
+            - name: Romanian
+              description: Posts in Romanian
+            - name: Jython
+              description: Posts about Jython
+            - name: Python
+              description: Posts about Python
+            - name: Free Software
+              description: Free Software
+            - name: Planet GNOME
+              description: Planet GNOME
+            - name: Planet Ubuntu
+              description: Planet Ubuntu
+
+
+tagger:
+    sorter: latest
+    archives:
+        blog:
+            target: tags
+            template: tagged_posts.j2
+            archive_extension: html
+            meta:
+                listable: false

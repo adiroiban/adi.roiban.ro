@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>{{ website.name }}</title>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="description" content="{{ website.description }}" />
+  <link rel="stylesheet" type="text/css"
+    media="screen"
+    href="http://adi.roiban.ro/wp-content/themes/keep-it-simple/style.css" />
+  <link
+    rel="alternate" type="application/rss+xml"
+    title="{{ website.name }} RSS Feed"
+    href="content_url(website.atom.url)" />
+  <meta name="generator" content="Hyde" />
+</head>
+
+<body>
+  <!-- header starts -->
+  <div id="header-wrap">
+    <div id="header" class="container_16">                        
+      <div>
+        <h1 id="logo-text">
+          <a href="/" title="">{{ website.name }}</a>
+        </h1>
+      </div>
+
+      <div>
+        <p id="intro">{{ website.tagline }}</p>               
+      </div>
+          
+      <div id="nav">
+          <ul>
+          {% for item in website.menu -%}
+          {% set active = False -%}
+          {% if item.type == 'page' -%}
+              {% set active = (resource.url ==
+                  site.content.resource_from_relative_path(item.url).url) -%}
+          {% else -%}
+              {% set active = (node ==
+                  site.content.node_from_relative_path(item.url)) -%}
+          {%- endif %}
+          {% set classes = ['page_item'] -%}
+          {% do classes.append('current_page_item') if active -%}
+          <li class="{{ classes|join(' ') }}">
+              <a href="{{ content_url(item.url) }}">
+                  {{ item.name }}
+              </a>
+          </li>
+          {%- endfor %}
+        </ul>       
+      </div>      
+
+      <div id="header-image"></div>
+      <form id="quick-search" action="http://adi.roiban.ro/" method="get" >
+          <p>
+          <label for="qsearch">Search:</label>
+          <input class="tbox" id="qsearch" type="text" name="s" value="" title="Start typing and hit ENTER" />
+          <input class="btn" alt="Search" type="image"  title="Search" src="http://adi.roiban.ro/wp-content/themes/keep-it-simple/images/search.gif" />
+          </p>
+      </form>                 
+    </div>
+  </div>
+  <!-- header ends -->
+
+
+  <!-- content starts -->
+  <div id="content-outer">
+    <div id="content-wrapper" class="container_16">
+
+      <!-- main -->
+      <div id="main" class="grid_8">
+
+
+        <h2><a href="http://adi.roiban.ro/2011/11/10/monitor-the-ups-in-ubuntu-with-network-ups-tools/" rel="bookmark" title="Permanent Link to Monitor the UPS in Ubuntu with Network UPS Tools">Monitor the UPS in Ubuntu with Network UPS Tools</a></h2>
+
+        <p class="post-info">Posted by Adi | Filed under <a href="http://adi.roiban.ro/category/en/" title="View all posts in English" rel="category tag">English</a>, <a href="http://adi.roiban.ro/category/free-software/" title="View all posts in Free Software" rel="category tag">Free Software</a> </p>
+
+        <p>I just found this great project called <a href="http://www.networkupstools.org/">Network UPS Tools or nut</a>. It comes with fully loaded with tools for monitoring local UPS, remote UPS and displaying the status via a weg page.</p>
+        <p>My installation is using an Must PowerAgent 1060, connected via USB.</p>
+        <p>Installing the software is easy, just use the magic words:</p>
+        <blockquote><p>sudo apt-get install nut nut-cgi</p></blockquote>
+        <p>To configure nut on Ubuntu I start by reading <a href="http://blog.shadypixel.com/monitoring-a-ups-with-nut-on-debian-or-ubuntu-linux/">this guide by a mysterious person named Shady Pixel.</a></p>
+
+
+        <img src='http://adi.roiban.ro/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' />
+        <div id="attachment_628" class="wp-caption alignnone" style="width: 490px"><a href="http://www.flickr.com/photos/lin/63368349/"><img src="http://adi.roiban.ro/wp-content/uploads/2011/11/63368349_eecf0a9e44_z.jpg" alt="Mikka, with Batteries By karmablue" title="Mikka, with Batteries By karmablue" width="480" height="640" class="size-full wp-image-628" /></a><p class="wp-caption-text">Mikka, with Batteries By karmablue</p></div>
+
+        <p class="postmeta">        
+          <a href="http://adi.roiban.ro/2011/11/10/monitor-the-ups-in-ubuntu-with-network-ups-tools/" class="readmore">Read more</a> |
+          <a href="http://adi.roiban.ro/2011/11/10/monitor-the-ups-in-ubuntu-with-network-ups-tools/#comments" class="comments">Comments (0)</a> |                
+          <span class="date">Created: November 10, 2011 - Updated: </span> 
+        </p>
+
+
+        <div class="alignleft"><a href="http://adi.roiban.ro/page/2/" >&laquo; Older Entries</a></div>
+
+        <div class="alignright"></div>
+
+      </div>
+      <!-- main ends -->
+
+          
+      <!-- left-columns starts -->
+      <div id="left-columns" class="grid_4">
+          <div class="grid_4 omega">
+          {% import "macros.j2" as macros with context %}
+          {{ macros.render_categories_nav() }}
+
+          {% import "macros.j2" as macros with context %}
+          {{ macros.render_archives_nav() }}
+
+          {% import "macros.j2" as macros with context %}
+          {{ macros.render_badges() }}
+          </div>  
+
+      </div>
+      <!-- end left-columns -->
+
+    </div>
+  </div>
+  <!-- content ends -->
+
+
+  <!-- footer starts --> 
+  <div id="footer-wrapper" class="container_16">
+    <div id="footer-bottom">
+
+      <p class="bottom-left">         
+        &copy;{{ website.author }} |
+        Design by : <a href="http://www.styleshout.com/">styleshout</a> |
+        Theme by : <a href="http://www.themelab.com">Theme Lab</a> and
+          <a href="http://www.websiteoffice.com/2008/06/reputation-link-bait/">Link Bait</a> 
+      </p>
+
+      <p class="bottom-right" >
+        <a href="http://adi.roiban.ro">Home</a> |
+        <a href="http://hyde.github.com/">Hyde</a> |
+        <a href="{{ content_url(website.atom.url) }}">
+          {{ website.atom.name }}
+        </a>                   
+      </p>
+
+    </div>  
+  </div>
+
+</body>
+</html>

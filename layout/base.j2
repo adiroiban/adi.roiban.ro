@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>{{ website.name }}</title>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="description" content="{{ website.description }}" />
+  <link rel="stylesheet" type="text/css"
+    media="screen"
+    href="http://adi.roiban.ro/wp-content/themes/keep-it-simple/style.css" />
+  <link
+    rel="alternate" type="application/rss+xml"
+    title="{{ website.name }} RSS Feed"
+    href="content_url(website.atom.url)" />
+  <meta name="generator" content="Hyde" />
+</head>
+
+<body>
+  <!-- header starts -->
+  <div id="header-wrap">
+    <div id="header" class="container_16">                        
+      <div>
+        <h1 id="logo-text">
+          <a href="/" title="">{{ website.name }}</a>
+        </h1>
+      </div>
+
+      <div>
+        <p id="intro">{{ website.tagline }}</p>               
+      </div>
+          
+      <div id="nav">
+          <ul>
+          {% for item in website.menu -%}
+
+          {% set active = False -%}
+          {% if item.type == 'page' -%}
+              {% set active = (resource.url ==
+                  site.content.resource_from_relative_path(item.url).url) -%}
+          {% else -%}
+              {% set active = (node ==
+                  site.content.node_from_relative_path(item.url)) -%}
+          {%- endif %}
+          {% set classes = ['page_item'] -%}
+          {% do classes.append('current_page_item') if active -%}
+          <li class="{{ classes|join(' ') }}">
+              <a href="{{ content_url(item.url) }}">
+                  {{ item.name }}
+              </a>
+          </li>
+          {%- endfor %}
+        </ul>       
+      </div>      
+
+      <div id="header-image"></div>
+      <form id="quick-search" action="http://adi.roiban.ro/" method="get" >
+          <p>
+          <label for="qsearch">Search:</label>
+          <input class="tbox" id="qsearch" type="text" name="s" value="" title="Start typing and hit ENTER" />
+          <input class="btn" alt="Search" type="image"  title="Search" src="http://adi.roiban.ro/wp-content/themes/keep-it-simple/images/search.gif" />
+          </p>
+      </form>                 
+    </div>
+  </div>
+  <!-- header ends -->
+
+
+  <!-- content starts -->
+  <div id="content-outer">
+    <div id="content-wrapper" class="container_16">
+
+      <!-- main -->
+      <div id="main" class="grid_8">
+        <h2>
+          <a href="resource.url" rel="bookmark" title="Permanent Link to {{ resource.meta.title }}">{{ resource.meta.title }}</a></h2>
+
+          {% filter restructuredtext -%}
+          {% block content %}{% endblock %}
+          {%- endfilter %}
+
+          <p class="postmeta">        
+              <span class="date">
+                <a href="resource.url" rel="bookmark" title="Permanent Link to {{ resource.meta.title }}">
+                  Permalink
+                </a>
+                |
+                Created {{ resource.meta.created.strftime('%A, %d %B %Y') }}
+                |
+                Last updated {{ resource.meta.updated.strftime('%A, %d %B %Y') }}
+              </span> 
+          </p>
+
+        <div class="alignleft"><a href="http://adi.roiban.ro/page/3/">« Older post</a></div>
+        <div class="alignright"><a href="http://adi.roiban.ro/">Newer post »</a></div>
+
+      </div>
+      <!-- main ends -->
+
+          
+      <!-- left-columns starts -->
+      <div id="left-columns" class="grid_4">
+          <div class="grid_4 omega">
+          {% import "macros.j2" as macros with context %}
+          {{ macros.render_categories_nav() }}
+
+          {% import "macros.j2" as macros with context %}
+          {{ macros.render_archives_nav() }}
+
+          {% import "macros.j2" as macros with context %}
+          {{ macros.render_badges() }}
+          </div>  
+
+      </div>
+      <!-- end left-columns -->
+
+    </div>
+  </div>
+  <!-- content ends -->
+
+
+  <!-- footer starts --> 
+  <div id="footer-wrapper" class="container_16">
+    <div id="footer-bottom">
+
+      <p class="bottom-left">         
+        &copy;{{ website.author }} |
+        Design by : <a href="http://www.styleshout.com/">styleshout</a> |
+        Theme by : <a href="http://www.themelab.com">Theme Lab</a> and
+          <a href="http://www.websiteoffice.com/2008/06/reputation-link-bait/">Link Bait</a> 
+      </p>
+
+      <p class="bottom-right" >
+        <a href="http://adi.roiban.ro">Home</a> |
+        <a href="http://hyde.github.com/">Hyde</a> |
+        <a href="{{ content_url(website.atom.url) }}">
+          {{ website.atom.name }}
+        </a>                   
+      </p>
+
+    </div>  
+  </div>
+
+</body>
+</html>

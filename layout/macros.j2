@@ -1,0 +1,132 @@
+{% macro render_main_menu() -%}
+
+{# Set menu item selected if the current resource matches the item in the
+   site's config file or set "Advanced topics" selected for any resources
+   that have the "advanced" folder as their parent.
+#}
+<ul>
+{% for menu_item in menu -%}
+    <li><a {% if (menu_item.url == resource.url) or
+                 (menu_item.title == "Advanced topics"
+                  and resource.node.name == "advanced")
+            %}class="selected"{% endif -%}
+            href="{{ content_url(menu_item.url) }}">{{ menu_item.title }}</a></li>
+{%- endfor %}
+</ul>
+{%- endmacro %}
+
+
+{# Advanced topics macro. Renders navigation at the end of the article. #}
+
+{% macro render_bottom_article_nav() %}
+<div class="bottom_article_nav">
+{% if resource.next_by_index is not none -%}
+    <div class="next"><a href="{{ resource.next_by_index.full_url }}">
+    {{ resource.next_by_index.meta.title_ending|replace("| ", "") }}</a>
+    &gt;</div>
+{%- endif %}
+
+{% if resource.prev_by_index is not none -%}
+    <div class="prev">&lt; <a href="{{ resource.prev_by_index.full_url }}">
+    {{ resource.prev_by_index.meta.title_ending|replace("| ", "") }}</a>
+    </div>
+{%- endif %}
+</div>
+{% endmacro %}
+
+
+{% macro render_badges() %}
+<div class="sidemenu">
+  <div class="textwidget">
+    <a href="http://www.couchsurfing.org">
+      <img src="http://www.couchsurfing.org/images/final-logo.png" border="0">
+    </a>
+    <a href="http://en.wikipedia.org/wiki/Waste_hierarchy">
+      <img src="{{ media_url('img/reduce-reuse-recycle.jpg') }}" border="0">
+    </a>
+    <a href="http://en.wikipedia.org/wiki/Animal_liberation_movement">
+      <img src="{{ media_url('img/liberation.jpg') }}" border="0">
+    </a>
+    <a href="http://www.reactieinlant.ro">
+      <img src="{{ media_url('img/reactieinlant.gif') }}" border="0">
+    </a>
+  </div>
+</div>  
+{% endmacro %}
+
+
+{% macro render_categories_nav() %}
+<div class="sidemenu">
+  <h3>Categories</h3>
+  <ul>
+    <li class="cat-item cat-item-19">
+      <a href="http://adi.roiban.ro/category/en/" title="View all posts filed under English">English</a> (55)
+    </li>
+    <li class="cat-item cat-item-9">
+      <a href="http://adi.roiban.ro/category/free-software/" title="View all posts filed under Free Software">Free Software</a> (84)
+    </li>
+    <li class="cat-item cat-item-26">
+      <a href="http://adi.roiban.ro/category/jython/" title="View all posts filed under Jython">Jython</a> (1)
+    </li>
+    <li class="cat-item cat-item-25">
+      <a href="http://adi.roiban.ro/category/planet-gnome/" title="View all posts filed under Planet GNOME">Planet GNOME</a> (4)
+    </li>
+    <li class="cat-item cat-item-21">
+      <a href="http://adi.roiban.ro/category/planet-ubuntu/" title="View all posts filed under Planet Ubuntu">Planet Ubuntu</a> (42)
+    </li>
+    <li class="cat-item cat-item-17">
+      <a href="http://adi.roiban.ro/category/ro/" title="View all posts filed under Romanian">Romanian</a> (38)
+    </li>
+  </ul>
+</div>
+{% endmacro %}
+
+
+{% macro render_archives_nav() %}
+<div class="sidemenu"><h3>Archives</h3>
+  <select name="archive-dropdown" onchange='document.location.href=this.options[this.selectedIndex].value;'>
+    <option value="">Select Month</option>
+    <option value='http://adi.roiban.ro/2011/11/'> November 2011 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2011/08/'> August 2011 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2011/05/'> May 2011 &nbsp;(3)</option>
+    <option value='http://adi.roiban.ro/2011/04/'> April 2011 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2011/02/'> February 2011 &nbsp;(2)</option>
+    <option value='http://adi.roiban.ro/2011/01/'> January 2011 &nbsp;(2)</option>
+    <option value='http://adi.roiban.ro/2010/12/'> December 2010 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2010/10/'> October 2010 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2010/06/'> June 2010 &nbsp;(3)</option>
+    <option value='http://adi.roiban.ro/2010/05/'> May 2010 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2010/04/'> April 2010 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2010/01/'> January 2010 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2009/12/'> December 2009 &nbsp;(3)</option>
+    <option value='http://adi.roiban.ro/2009/11/'> November 2009 &nbsp;(3)</option>
+    <option value='http://adi.roiban.ro/2009/10/'> October 2009 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2009/09/'> September 2009 &nbsp;(6)</option>
+    <option value='http://adi.roiban.ro/2009/07/'> July 2009 &nbsp;(2)</option>
+    <option value='http://adi.roiban.ro/2009/05/'> May 2009 &nbsp;(7)</option>
+    <option value='http://adi.roiban.ro/2009/04/'> April 2009 &nbsp;(2)</option>
+    <option value='http://adi.roiban.ro/2009/03/'> March 2009 &nbsp;(8)</option>
+    <option value='http://adi.roiban.ro/2009/02/'> February 2009 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2009/01/'> January 2009 &nbsp;(7)</option>
+    <option value='http://adi.roiban.ro/2008/12/'> December 2008 &nbsp;(3)</option>
+    <option value='http://adi.roiban.ro/2008/11/'> November 2008 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2008/09/'> September 2008 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2008/08/'> August 2008 &nbsp;(2)</option>
+    <option value='http://adi.roiban.ro/2008/07/'> July 2008 &nbsp;(2)</option>
+    <option value='http://adi.roiban.ro/2008/06/'> June 2008 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2008/05/'> May 2008 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2008/04/'> April 2008 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2008/03/'> March 2008 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2008/01/'> January 2008 &nbsp;(3)</option>
+    <option value='http://adi.roiban.ro/2007/12/'> December 2007 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2007/11/'> November 2007 &nbsp;(2)</option>
+    <option value='http://adi.roiban.ro/2007/10/'> October 2007 &nbsp;(2)</option>
+    <option value='http://adi.roiban.ro/2007/09/'> September 2007 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2007/07/'> July 2007 &nbsp;(1)</option>
+    <option value='http://adi.roiban.ro/2007/05/'> May 2007 &nbsp;(3)</option>
+    <option value='http://adi.roiban.ro/2007/04/'> April 2007 &nbsp;(4)</option>
+    <option value='http://adi.roiban.ro/2007/03/'> March 2007 &nbsp;(3)</option>
+    <option value='http://adi.roiban.ro/2007/02/'> February 2007 &nbsp;(2)</option>
+ </select>
+</div>
+{% endmacro %}
