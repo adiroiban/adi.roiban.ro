@@ -1,0 +1,6 @@
+---
+title: RSS Feed
+extends: atom.j2
+skip_navigation: True
+comments: False
+---

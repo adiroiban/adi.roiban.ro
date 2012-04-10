@@ -38,45 +38,32 @@
 {% macro render_badges() %}
 <div class="sidemenu">
   <div class="textwidget">
-    <a href="http://www.couchsurfing.org">
-      <img src="http://www.couchsurfing.org/images/final-logo.png" border="0">
-    </a>
-    <a href="http://en.wikipedia.org/wiki/Waste_hierarchy">
-      <img src="{{ media_url('img/reduce-reuse-recycle.jpg') }}" border="0">
-    </a>
-    <a href="http://en.wikipedia.org/wiki/Animal_liberation_movement">
-      <img src="{{ media_url('img/liberation.jpg') }}" border="0">
-    </a>
-    <a href="http://www.reactieinlant.ro">
-      <img src="{{ media_url('img/reactieinlant.gif') }}" border="0">
-    </a>
+    {% for item in website.badges -%}
+      <a href="{{ item.url }}">
+        <img src="{{ media_url(item.image) }}" alt="{{ item.name }}">
+      </a>
+    {%- endfor %}
   </div>
 </div>  
 {% endmacro %}
 
 
 {% macro render_categories_nav() %}
+
 <div class="sidemenu">
   <h3>Categories</h3>
   <ul>
+
+    {% for tag in website.tags %}
+    {% set tag_count = site.content.walk_resources_tagged_with(tag.name)|list|length %}
     <li class="cat-item cat-item-19">
-      <a href="http://adi.roiban.ro/category/en/" title="View all posts filed under English">English</a> (55)
+      <a
+        href="{{ content_url('tags/'~tag.name~'.html') }}"
+        title="View all posts filed under {{ tag.title }}">
+          {{ tag.title }}
+      </a> ({{ tag_count }})
     </li>
-    <li class="cat-item cat-item-9">
-      <a href="http://adi.roiban.ro/category/free-software/" title="View all posts filed under Free Software">Free Software</a> (84)
-    </li>
-    <li class="cat-item cat-item-26">
-      <a href="http://adi.roiban.ro/category/jython/" title="View all posts filed under Jython">Jython</a> (1)
-    </li>
-    <li class="cat-item cat-item-25">
-      <a href="http://adi.roiban.ro/category/planet-gnome/" title="View all posts filed under Planet GNOME">Planet GNOME</a> (4)
-    </li>
-    <li class="cat-item cat-item-21">
-      <a href="http://adi.roiban.ro/category/planet-ubuntu/" title="View all posts filed under Planet Ubuntu">Planet Ubuntu</a> (42)
-    </li>
-    <li class="cat-item cat-item-17">
-      <a href="http://adi.roiban.ro/category/ro/" title="View all posts filed under Romanian">Romanian</a> (38)
-    </li>
+    {% endfor %}
   </ul>
 </div>
 {% endmacro %}

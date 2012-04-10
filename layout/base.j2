@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>{{ website.name }}</title>
+  <title>{{ website.title }}</title>
   <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
   <meta name="description" content="{{ website.description }}" />
   <link rel="stylesheet" type="text/css"
@@ -16,8 +16,8 @@
 
   <link
     rel="alternate" type="application/rss+xml"
-    title="{{ website.name }} RSS Feed"
-    href="content_url(website.atom.url)" />
+    title="{{ website.title }} RSS Feed"
+    href="{{ content_url(website.atom.url) }}" />
   <meta name="generator" content="Hyde" />
 </head>
 
@@ -27,7 +27,7 @@
     <div id="header" class="container_16">                        
       <div>
         <h1 id="logo-text">
-          <a href="/" title="">{{ website.name }}</a>
+          <a href="/" title="">{{ website.title }}</a>
         </h1>
       </div>
 
@@ -77,27 +77,51 @@
 
       <!-- main -->
       <div id="main" class="grid_8">
+        {% block heading %}
         <h2>
-          <a href="resource.url" rel="bookmark" title="Permanent Link to {{ resource.meta.title }}">{{ resource.meta.title }}</a></h2>
+          <a href="{{ resource.url }}" rel="bookmark" title="Permanent Link to {{ resource.meta.title }}">{{ resource.meta.title }}</a>
+        </h2>
+        {% endblock heading %}
 
+        {% block main %}
           {% filter restructuredtext -%}
           {% block content %}{% endblock %}
           {%- endfilter %}
+        {% endblock main %}
 
-          <p class="postmeta">        
-              <span class="date">
-                <a href="resource.url" rel="bookmark" title="Permanent Link to {{ resource.meta.title }}">
-                  Permalink
-                </a>
-                |
-                Created {{ resource.meta.created.strftime('%A, %d %B %Y') }}
-                |
-                Last updated {{ resource.meta.updated.strftime('%A, %d %B %Y') }}
-              </span> 
-          </p>
+        {% block page_date %}
+        <p class="postmeta">        
+            <span class="date">
+              <a href="{{ resource.url }}" rel="bookmark" title="Permanent Link to {{ resource.meta.title }}">
+                Permalink
+              </a>
+              |
+              Created {{ resource.meta.created.strftime('%A, %d %B %Y') }}
+              |
+              Last updated {{ resource.meta.updated.strftime('%A, %d %B %Y') }}
+            </span> 
+        </p>
+        {% endblock page_date %}
 
-        <div class="alignleft"><a href="http://adi.roiban.ro/page/3/">« Older post</a></div>
-        <div class="alignright"><a href="http://adi.roiban.ro/">Newer post »</a></div>
+    {% block navigation %}
+    {% if resource.meta.created %}
+      <div class="alignleft">
+      {% if resource.next_by_latest %}
+        <a href="{{ resource.base_url }}{{ resource.next_by_latest.url -}}">« Older post</a>
+      {% else %}
+        <span class="disabledLinkWrap">« Older post</span>
+      {% endif %}
+      </div>
+
+      <div class="alignright">
+      {% if resource.prev_by_latest %}
+        <a href="{{ resource.base_url }}{{ resource.prev_by_latest.url -}}">Newer post »</a>
+      {% else %}
+        <span class="disabledLinkWrap">Newer post »</span>
+      {% endif %}
+      </div>
+    {% endif %}
+    {% endblock navigation %}
 
       </div>
       <!-- main ends -->
@@ -108,9 +132,6 @@
           <div class="grid_4 omega">
           {% import "macros.j2" as macros with context %}
           {{ macros.render_categories_nav() }}
-
-          {% import "macros.j2" as macros with context %}
-          {{ macros.render_archives_nav() }}
 
           {% import "macros.j2" as macros with context %}
           {{ macros.render_badges() }}

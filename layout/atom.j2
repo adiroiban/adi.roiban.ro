@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>
+        {% block title %}{{ website.title }}{% endblock %}
+    </title>
+    {% block self_url %}
+    <link href="{{ website.url }} {{ content_url(website.atom.url) }}" rel="self" />
+    {% endblock %}
+
+    {% block site_url %}
+    <link href="{{ website.url }}{{ content_url('') }}"/>
+    {% endblock %}
+
+    {% block feed_extra %}
+    {% endblock %}
+
+    <updated>{{ time_now|xmldatetime }}</updated>
+
+    <id>{{ website.url }}{{ content_url(resource.url) }}</id>
+
+    {% for res in resource.node.walk_resources_sorted_by_time() %}
+        <entry>
+            <title type="html">{{ res.meta.title }}</title>
+            <author><name>{{ website.author }}</name></author>
+            <link href="{{ website.url }}{{ content_url(res.url) }}"/>
+            <updated>{{ res.meta.updated|xmldatetime }}</updated>
+            <published>{{ res.meta.created|xmldatetime }}</published>
+            <id>{{ website.url }}{{ content_url(res.url) }}</id>
+            {% for tag in res.meta.tags %}
+            <category   scheme="{{ website.url }}{{ content_url('blog/tags') }}"
+                        term="{{tag}}"
+                        label="{{ tag|title }}" />
+            {% endfor %}
+
+            <content type="html">
+                {% refer to res.url as article -%}
+                {% filter forceescape -%}
+                {% if resource.meta.excerpts_only -%}
+                {{ article.image|markdown|typogrify }}
+                {{ article.excerpt|markdown|typogrify }}
+                {%- else %}
+                {{ article.post|markdown|typogrify }}
+                {%- endif %}
+                {%- endfilter %}
+            </content>
+        </entry>
+    {% if loop.index > 8 %} {% break %} {% endif %} 
+    {% endfor %}
+</feed>

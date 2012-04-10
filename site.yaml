@@ -23,7 +23,7 @@ plugins:
 context:
     data:
         website:
-            name: Adi Roiban
+            title: Adi Roiban
             author: Adi Roiban
             description: Adi Roiban (aka Roiban Mircea Adrian) personal blog.
             tagline: Who wipes ?
@@ -45,6 +45,54 @@ context:
                     type: page
                     url: belief.html
 
+            # Official tags listed in the sidebar.
+            tags:
+                -
+                    title: English
+                    name: english
+                    description: Posts in English
+                -
+                    title: Romanian
+                    name: romanian
+                    description: Posts in Romanian
+                -
+                    title: Python
+                    name: python
+                    description: Posts about Python
+                -
+                    title: Free Software
+                    name: free-software
+                    description: Free Software
+                -
+                    title: Planet GNOME
+                    name: planet-gnome
+                    description: Planet GNOME
+                -
+                    title: Planet Ubuntu
+                    name: planet-ubuntu
+                    description: Planet Ubuntu
+
+            # Badges that will be displayed in the sidebar.
+            badges:
+                -
+                    name: Animal Liberation Human Liberation
+                    url: http://en.wikipedia.org/wiki/Animal_liberation_movement
+                    image: img/liberation.jpg
+                -
+                    name: Reduce Reuse Recycle
+                    url: http://en.wikipedia.org/wiki/Waste_hierarchy
+                    image: img/reduce-reuse-recycle.jpg
+                -
+                    name: CouchSurfing
+                    url: http://www.couchsurfing.org/
+                    image: img/cs.png
+                -
+                    name: Reactie in Lant
+                    url: http://www.reactieinlant.ro/
+                    image: img/reactieinlant.gif
+        links:
+            g_plus:
+                url: https://plus.google.com/u/0/114870316061271703771/posts
 
 meta:
     nodemeta: meta.yaml
@@ -81,23 +129,29 @@ sorter:
 
 
 grouper:
+    # Category grouper is a selection of tags which will be listed in
+    # menu.
     category:
         sorter: name
         description: Post cagetory
         groups:
             - name: English
+              tag: english
               description: Posts in English
             - name: Romanian
+              tag: romanian
               description: Posts in Romanian
-            - name: Jython
-              description: Posts about Jython
             - name: Python
+              tag: python
               description: Posts about Python
             - name: Free Software
+              tag: free-software
               description: Free Software
             - name: Planet GNOME
+              tag: planet-gnome
               description: Planet GNOME
             - name: Planet Ubuntu
+              tag: planet-ubuntu
               description: Planet Ubuntu
 
 
@@ -109,4 +163,4 @@ tagger:
             template: tagged_posts.j2
             archive_extension: html
             meta:
-                listable: false
+                skip_navigation: True

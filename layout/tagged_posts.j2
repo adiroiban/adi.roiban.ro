@@ -1,0 +1,28 @@
+{% extends "base.j2" %}
+
+{% block main %}
+<section class="archives">
+<h1 class="tag title">Tagged: {{ tag.name }}</h1>
+<ul class="posts clear">
+{% for resource in site.content.walk_resources_tagged_with(tag.name) -%}
+<li class="">
+    <a href="{{ content_url(resource.url) }}">{{ resource.meta.title }}</a>
+    {% if resource.meta.tags %}
+    <ul class="tags">
+    {% for tag in resource.meta.tags %}
+    <li>
+        <a class="small" href="{{ content_url('tags/'~tag~'.html') }}">
+            <span class="quo">&laquo;</span> {{ tag }} <span class="quo">&raquo;</span>
+        </a>
+    </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    <time datetime="{{ resource.meta.created.strftime('%Y-%m-%d') }}">
+        {{ resource.meta.created.strftime('%a, %d %b %Y') }}
+    </time>
+</li>
+{%- endfor %}
+</ul>
+</section>
+{% endblock %}
