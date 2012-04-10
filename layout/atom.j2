@@ -32,19 +32,28 @@
                         label="{{ tag|title }}" />
             {% endfor %}
 
+            {% refer to res.url as article -%}
+            {% set content = site.load_resource(res) | restructuredtext | striptags %}
+
+            <summary>
+            {% filter forceescape -%}
+              {% if article.excerpt %}
+                {{ article.image }}
+                {{ article.excerpt }}
+              {% else %}
+                {{ content | truncate(length=255, end='...')}}
+              {% endif %}
+            {%- endfilter %}
+            </summary>
+
             <content type="html">
-                {% refer to res.url as article -%}
-                {% filter forceescape -%}
-                {% if resource.meta.full_content -%}
-                  {% filter restructuredtext -%}
-                  {{ site.load_resource(res) }}
-                  {%- endfilter %}
-                {%- else %}
-                  {{ article.image }}
-                  {{ article.excerpt }}
-                {%- endif %}
-                {%- endfilter %}
+              {% filter forceescape -%}
+              {% if resource.meta.full_content -%}
+                {{ content }}
+              {%- endif %}
+              {%- endfilter %}
             </content>
+
         </entry>
     {% if loop.index > 8 %} {% break %} {% endif %} 
     {% endfor %}

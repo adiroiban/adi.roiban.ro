@@ -59,10 +59,10 @@
       </div>      
 
       <div id="header-image"></div>
-      <form id="quick-search" action="http://adi.roiban.ro/" method="get" >
+      <form id="quick-search" action="{{ content_url('search.html') }}" method="get" >
           <p>
           <label for="qsearch">Search:</label>
-          <input class="tbox" id="qsearch" type="text" name="s" value="" title="Start typing and hit ENTER" />
+          <input class="tbox" id="qsearch" type="text" name="query" value="" title="Start typing and hit ENTER" />
           <input class="btn" alt="Search" type="image"  title="Search" src="{{ media_url('img/search.gif') }}" />
           </p>
       </form>

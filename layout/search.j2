@@ -1,0 +1,13 @@
+{% extends "base.j2" %}
+
+{% block main %}
+
+<div id="search_results"></div>
+
+<script src="{{ media_url('js/jquery-1.6.1.min.js') }}"></script>
+<script src="{{ media_url('js/jquery-tapir.min.js') }}"></script>
+<script>
+    $('#search_results').tapir({'token': '{{ resource.meta.tapir }}'});
+</script>
+
+{% endblock main %}

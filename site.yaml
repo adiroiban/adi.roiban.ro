@@ -21,7 +21,7 @@ context:
             author: Adi Roiban
             description: Adi Roiban (aka Roiban Mircea Adrian) personal blog.
             tagline: Who wipes ?
-            url: http://adiroiban.github.com
+            url: http://adi.roiban.ro
             source_url: https://github.com/adiroiban/adiroiban.github.com
             atom:
                 name: RSS Feeds
@@ -94,6 +94,7 @@ meta:
     default_block: content
     ga_tracking_code: UA-2942924-1
     disqus: adiroiban
+    tapir: 4f8470fa3f61b01486000010
     skip_navigation: False
 
 
