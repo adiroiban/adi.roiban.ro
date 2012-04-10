@@ -18,7 +18,7 @@
 
     <id>{{ website.url }}{{ content_url(resource.url) }}</id>
 
-    {% for res in resource.node.walk_resources_sorted_by_time() %}
+    {% for res in resource.node.walk_resources_sorted_by_latest() %}
         <entry>
             <title type="html">{{ res.meta.title }}</title>
             <author><name>{{ website.author }}</name></author>

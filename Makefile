@@ -6,7 +6,7 @@ HYDE="build/bin/hyde"
 
 
 run:
-	${PYTHON} ${HYDE} gen -d build/deploy
+	${PYTHON} ${HYDE} gen -r -d build/deploy
 	${PYTHON} ${HYDE} serve -d build/deploy
 
 

@@ -1,3 +1,4 @@
 .hyde_deps
 deploy/**
 build/**
+content/tags
