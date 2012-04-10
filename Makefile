@@ -10,7 +10,6 @@ generate:
 
 
 run: generate
-
 	${PYTHON} ${HYDE} serve -d ${BUILD_FOLDER}
 
 
@@ -22,7 +21,7 @@ deps:
 
 
 publish: generate
-	git commit -a -m 'Update static files.'
+	git commit -a -m 'make: Update static files.'
 	git push origin
 
 
