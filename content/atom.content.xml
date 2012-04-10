@@ -1,7 +1,0 @@
----
-title: Site content RSS Feed for tapir
-extends: atom.j2
-skip_navigation: True
-comments: False
-full_content: True
----

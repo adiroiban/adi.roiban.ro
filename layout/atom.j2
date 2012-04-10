@@ -25,7 +25,7 @@
             <link href="{{ website.url }}{{ content_url(res.url) }}"/>
             <updated>{{ res.meta.updated|xmldatetime }}</updated>
             <published>{{ res.meta.created|xmldatetime }}</published>
-            <id>{{ website.url }}{{ content_url(res.url) }}</id>
+            <id>{{ content_url(res.url) }}</id>
             {% for tag in res.meta.tags %}
             <category   scheme="{{ website.url }}{{ content_url('blog/tags') }}"
                         term="{{tag}}"
