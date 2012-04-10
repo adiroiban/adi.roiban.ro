@@ -65,7 +65,7 @@
           <input class="tbox" id="qsearch" type="text" name="s" value="" title="Start typing and hit ENTER" />
           <input class="btn" alt="Search" type="image"  title="Search" src="http://adi.roiban.ro/wp-content/themes/keep-it-simple/images/search.gif" />
           </p>
-      </form>                 
+      </form>
     </div>
   </div>
   <!-- header ends -->
@@ -90,7 +90,7 @@
         {% endblock main %}
 
         {% block page_date %}
-        <p class="postmeta">        
+        <p class="postmeta">
             <span class="date">
               <a href="{{ resource.url }}" rel="bookmark" title="Permanent Link to {{ resource.meta.title }}">
                 Permalink
@@ -99,7 +99,7 @@
               Created {{ resource.meta.created.strftime('%A, %d %B %Y') }}
               |
               Last updated {{ resource.meta.updated.strftime('%A, %d %B %Y') }}
-            </span> 
+            </span>
         </p>
         {% endblock page_date %}
 
@@ -126,7 +126,7 @@
       </div>
       <!-- main ends -->
 
-          
+
       <!-- left-columns starts -->
       <div id="left-columns" class="grid_4">
           <div class="grid_4 omega">
@@ -135,7 +135,7 @@
 
           {% import "macros.j2" as macros with context %}
           {{ macros.render_badges() }}
-          </div>  
+          </div>
 
       </div>
       <!-- end left-columns -->
@@ -144,24 +144,24 @@
   </div>
   <!-- content ends -->
 
-
-  <!-- footer starts --> 
+  <!-- footer starts -->
   <div id="footer-wrapper" class="container_16">
     <div id="footer-bottom">
 
-      <p class="bottom-left">         
+      <p class="bottom-left">
         &copy;{{ website.author }} |
+        Source on <a href="{{website.source_url}}">GitHub</a> |
+        Generated using <a href="http://hyde.github.com/">Hyde</a> |
         Design by : <a href="http://www.styleshout.com/">styleshout</a> |
         Theme by : <a href="http://www.themelab.com">Theme Lab</a> and
-          <a href="http://www.websiteoffice.com/2008/06/reputation-link-bait/">Link Bait</a> 
+          <a href="http://www.websiteoffice.com/2008/06/reputation-link-bait/">Link Bait</a>
       </p>
 
       <p class="bottom-right" >
         <a href="http://adi.roiban.ro">Home</a> |
-        <a href="http://hyde.github.com/">Hyde</a> |
         <a href="{{ content_url(website.atom.url) }}">
           {{ website.atom.name }}
-        </a>                   
+        </a>
       </p>
 
     </div>  

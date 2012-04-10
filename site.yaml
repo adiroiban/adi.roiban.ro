@@ -1,4 +1,4 @@
-mode: production
+mode: development
 media_root: media
 media_url: /media
 base_url: /
@@ -28,6 +28,7 @@ context:
             description: Adi Roiban (aka Roiban Mircea Adrian) personal blog.
             tagline: Who wipes ?
             url: http://adi.roiban.ro
+            source_url: https://github.com/adiroiban/adiroiban.github.com
             atom:
                 name: RSS Feeds
                 url: atom.xml

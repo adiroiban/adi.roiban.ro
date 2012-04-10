@@ -7,7 +7,7 @@
         <link href="http://adi.roiban.ro/"/>
     
         
-    <updated>2012-04-10T17:17:55Z</updated>
+    <updated>2012-04-10T17:30:04Z</updated>
 
     <id>http://adi.roiban.ro/atom.xml</id>
 
@@ -18,6 +18,9 @@
             <updated>2012-04-10T00:00:00Z</updated>
             <published>2012-04-10T00:00:00Z</published>
             <id>http://adi.roiban.ro/articles/2012/2012-04-10-inapoi-la-pagini-statice.html</id>
+                        <category   scheme="http://adi.roiban.ro/blog/tags"
+                        term="romanian"
+                        label="Romanian" />
             
             <content type="html">
                                             </content>

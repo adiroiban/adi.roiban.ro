@@ -5,8 +5,12 @@ PIP="build/bin/pip"
 HYDE="build/bin/hyde"
 BUILD_FOLDER=.
 
-run:
+generate:
 	${PYTHON} ${HYDE} gen -r -d ${BUILD_FOLDER}
+
+
+run: generate
+
 	${PYTHON} ${HYDE} serve -d ${BUILD_FOLDER}
 
 
