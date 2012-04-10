@@ -22,7 +22,7 @@ deps:
 
 
 publish: generate
-	git commit -a 'Update static files.'
+	git commit -a -m 'Update static files.'
 	git push origin
 
 
