@@ -1,7 +1,7 @@
 adi.roiban.ro website
 =====================
 
-This is a mixture or source code and publised HTML file for my personal blog.
+This is the source code for my personal blog.
 
 It uses `Hyde <https://github.com/hyde/hyde>`_.
 
@@ -14,4 +14,4 @@ For building this site I looked for documentation from
 `Merlin Rebrovic's Hyde Starte Kit
 <https://github.com/merlinrebrovic/hyde-starter-kit>`_
 
-Content and source code is liscensed under MIT/BSD license.
+Content and source code is licensed under MIT/BSD license.
