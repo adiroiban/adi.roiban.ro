@@ -6,12 +6,13 @@ HYDE="build/bin/hyde"
 BUILD_FOLDER=.
 DESTINATION='adi@tla.ro:/home/adi/adi.roiban.ro/'
 
-generate:
-	${PYTHON} ${HYDE} gen -r -d ${BUILD_FOLDER}
-
 
 run: generate
 	${PYTHON} ${HYDE} serve -d ${BUILD_FOLDER}
+
+
+generate:
+	${PYTHON} ${HYDE} gen -r -d ${BUILD_FOLDER}
 
 
 deps:
@@ -24,6 +25,7 @@ deps:
 publish: generate
 	git commit -a -m 'make: Update static files.'
 	git push origin
+	rsync -aqcz -e 'ssh' --exclude-from=rsync.exclude ./ ${DESTINATION}
 
 
 upload: generate

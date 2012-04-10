@@ -1,6 +1,6 @@
 {% extends "base.j2" %}
 
-{% set pages_by_latest = site.content.walk_resources_sorted_by_latest() %}
+{% set pages_by_latest = resource.node.walk_resources_sorted_by_latest() %}
 {% set resource = pages_by_latest[0] %}
 
 {% block heading %}
@@ -16,7 +16,15 @@
 {% endblock navigation %}
 
 {% block main %}
-{% filter restructuredtext -%}
-{{ site.load_resource(resource) }}
-{%- endfilter %}
+
+  {# we can not pass resource to 'refer' #}
+  {% set res = resource %}
+  {% refer to res.url as article -%}
+  {% if article.excerpt %}
+    {{ article.excerpt|restructuredtext }}
+    <a href="{{ res.url }}">Read more...</a>
+  {% else %}
+    {{ site.load_resource(resource)|restructuredtext }}
+  {% endif %}
+
 {% endblock main %}

@@ -35,11 +35,13 @@
             <content type="html">
                 {% refer to res.url as article -%}
                 {% filter forceescape -%}
-                {% if resource.meta.excerpts_only -%}
-                {{ article.image|markdown|typogrify }}
-                {{ article.excerpt|markdown|typogrify }}
+                {% if resource.meta.full_content -%}
+                  {% filter restructuredtext -%}
+                  {{ site.load_resource(res) }}
+                  {%- endfilter %}
                 {%- else %}
-                {{ article.post|markdown|typogrify }}
+                  {{ article.image }}
+                  {{ article.excerpt }}
                 {%- endif %}
                 {%- endfilter %}
             </content>
