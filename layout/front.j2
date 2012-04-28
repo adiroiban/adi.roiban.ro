@@ -26,5 +26,10 @@
   {% else %}
     {{ site.load_resource(resource)|restructuredtext }}
   {% endif %}
-
+  <p>
+    <a href="{{ res.url }}#comments">Leave or read comments...</a>
+  </p>
 {% endblock main %}
+
+{% block comments %}
+{% endblock comments %}
