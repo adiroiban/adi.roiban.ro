@@ -4,15 +4,14 @@
   <title>{{ website.title }}</title>
   <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
   <meta name="description" content="{{ website.description }}" />
+
   <link rel="stylesheet" type="text/css"
     media="screen"
-    href="{{ media_url('css/reset.css') }}" />
-  <link rel="stylesheet" type="text/css"
-    media="screen"
-    href="{{ media_url('css/960.css') }}" />
+    href="{{ media_url('css/bootstrap.css') }}" />
   <link rel="stylesheet" type="text/css"
     media="screen"
     href="{{ media_url('css/style.css') }}" />
+
 
   <link
     rel="alternate" type="application/rss+xml"
@@ -23,7 +22,7 @@
 
 <body>
   <!-- header starts -->
-  <div id="header-wrap">
+  <div class="container">
     <div id="header" class="container_16">                        
       <div>
         <h1 id="logo-text">
@@ -72,11 +71,11 @@
 
 
   <!-- content starts -->
-  <div id="content-outer">
-    <div id="content-wrapper" class="container_16">
+  <div class="container">
+    <div class="row-fluid">
 
       <!-- main -->
-      <div id="main" class="grid_8">
+      <div id="main" class="span8">
         {% block heading %}
         <h2>
           <a href="{{ resource.url }}" rel="bookmark" title="Permanent Link to {{ resource.meta.title }}">{{ resource.meta.title }}</a>
@@ -105,21 +104,25 @@
 
     {% block navigation %}
     {% if resource.meta.created %}
-      <div class="alignleft">
-      {% if resource.next_by_latest %}
-        <a href="{{ resource.base_url }}{{ resource.next_by_latest.url -}}">« Older post</a>
-      {% else %}
-        <span class="disabledLinkWrap">« Older post</span>
-      {% endif %}
-      </div>
+      <ul class="pager">
+        <li class="previous">
+          {% if resource.next_by_latest %}
+          <a href="{{ resource.base_url }}{{ resource.next_by_latest.url -}}">&larr; Older post</a>
+          {% else %}
+          <span class="disabledLinkWrap">&larr; Older post</span>
+          {% endif %}
+        </li>
+        <li class="next">
+          {% if resource.prev_by_latest %}
+          <a href="{{ resource.base_url }}{{ resource.prev_by_latest.url -}}">Newer post &rarr;</a>
+          {% else %}
+          <span class="disabledLinkWrap">Newer post &rarr;</span>
+          {% endif %}
+        </li>
+      </ul>
 
-      <div class="alignright">
-      {% if resource.prev_by_latest %}
-        <a href="{{ resource.base_url }}{{ resource.prev_by_latest.url -}}">Newer post »</a>
-      {% else %}
-        <span class="disabledLinkWrap">Newer post »</span>
-      {% endif %}
-      </div>
+
+
     {% endif %}
     {% endblock navigation %}
 
@@ -133,15 +136,12 @@
 
 
       <!-- left-columns starts -->
-      <div id="left-columns" class="grid_4">
-          <div class="grid_4 omega">
+      <div id="left-columns" class="span3">
           {% import "macros.j2" as macros with context %}
           {{ macros.render_categories_nav() }}
 
           {% import "macros.j2" as macros with context %}
           {{ macros.render_badges() }}
-          </div>
-
       </div>
       <!-- end left-columns -->
 

@@ -2,3 +2,4 @@
 deploy/**
 build/**
 content/tags
+downloads/*

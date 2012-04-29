@@ -1,38 +1,14 @@
-/* ----------------------------------------------
 
-    Template Name : Keep It Simple
-
-    Template Code : S-0027
-
-    Version : 1.0   
-
-    Author : Erwin Aligam
-
-    Author URI : http://www.styleshout.com/       
-
-    Last Date Modified : September 29, 2008 
-
- ------------------------------------------------ */
-
- 
-
-/* ----------------------------------------------
-
-   HTML ELEMENTS
-
-------------------------------------------------- */ 
 
 body {
 
-    font: 11px/165% 'Lucida Grande', Verdana, Helvetica, sans-serif;
+    font: 'Lucida Grande', Verdana, Helvetica, sans-serif;
 
     color: #111111;     
 
     margin: 0; padding: 0 0 50px 0; 
 
-    background: #F6F5F5 url(../img/bg.gif) repeat-x; 
-
-    text-align: center;
+    background: #F6F5F5 url(/media/img/bg.gif) repeat-x; 
 
 }
 
@@ -47,42 +23,35 @@ a:link, a:visited {
 }
 
 a:hover {
-
     border-bottom: 1px dotted #846342;  
-
 }
 
 a.more-link {
-
     padding-bottom: 2px;
-
     font-weight: bold;  
-
     border-bottom: 1px dotted #846342;  
-
 }
 
+
 a:hover.more-link {
-
     text-decoration: none;
-
 }
 
 /* Headers */
-
 h1, h2, h3, h4 {
-
     font: bold 1em/1.5em Georgia, 'Times New Roman', Times, serif;
-
     color: #444;
-
     padding: 10px 15px 7px 15px;     
-
 }
+
 
 h1 { font-size: 3.7em; font-weight: normal; letter-spacing: -2px; }
 
-h2 { font-size: 2.8em; font-weight: normal; color: #663333; }
+h2 {
+    font-size: 2.8em;
+    font-weight: normal;
+    color: #663333;
+}
 
 h3 { font-size: 2em; font-weight: normal; letter-spacing: -0.5px; padding-top: 15px}
 
@@ -190,7 +159,7 @@ blockquote {
 
     border: 1px solid #F0F0F0;
 
-    background: #f8f8f8 url(../img/quote.gif) no-repeat 5px 2px;
+    background: #f8f8f8 url(/media/img/quote.gif) no-repeat 5px 2px;
 
     font-weight: normal;
 
@@ -370,7 +339,7 @@ input.button {
 
     margin: 0 auto; 
 
-    background: #fff url(../img/content-bg.gif) repeat-y center top;    
+    background: #fff url(/media/img/content-bg.gif) repeat-y center top;    
 
     padding-bottom: 35px;
 
@@ -384,7 +353,7 @@ input.button {
 
     width: 100%;
 
-    background: #fff url(../img/bg.gif) repeat-x ;  
+    background: #fff url(/media/img/bg.gif) repeat-x ;  
 
     margin: 0; padding: 0; 
 
@@ -396,7 +365,7 @@ input.button {
 
     margin: 0 auto;
 
-    background: url(../img/border.gif) repeat-x left bottom;    
+    background: url(/media/img/border.gif) repeat-x left bottom;    
 
     height: 175px;  
 
@@ -429,47 +398,28 @@ input.button {
 #header h1#logo-text a:hover { border: none; }
 
 #header p#intro {
-
     position: absolute;
-
     margin: 0; padding: 0;
-
     font-family: Georgia, 'Times New Roman', Times, Serif;
-
     font-weight: normal;
-
     font-size: 17px;
-
     line-height: 1.6em;
-
     font-style: italic;
-
     letter-spacing: -.5px;
-
     color: #506E39;
-
     width: 400px;
-
-    
-
     /* change the values of top and left to adjust the position */
-
-    top: 130px; left: 100px;        
-
+    top: 130px;
+    left: 100px;
+    text-align: center;
 }
 
 #header #header-image {
-
     position: absolute;
-
-    background: url(../img/header-image.gif) no-repeat;
-
+    background: url(/media/img/header-image.gif) no-repeat;
     width: 371px;
-
     height: 174px;  
-
     right: 10px; top: 0;    
-
 }
 
 
@@ -488,7 +438,7 @@ input.button {
 
     width: 270px; height: 33px;
 
-    background: #F5F4F3 url(../img/header-search.gif) no-repeat;    
+    background: #F5F4F3 url(/media/img/header-search.gif) no-repeat;    
 
     z-index: 999999;
 
@@ -604,7 +554,7 @@ input.button {
 
 #header #nav ul li.current_page_item {
 
-    background: transparent url(../img/left-tab.gif) no-repeat; 
+    background: transparent url(/media/img/left-tab.gif) no-repeat; 
 
 }
 
@@ -612,7 +562,7 @@ input.button {
 
     color: #444;
 
-    background: transparent url(../img/right-tab.gif) no-repeat right top;  
+    background: transparent url(/media/img/right-tab.gif) no-repeat right top;  
 
 }
 
@@ -682,7 +632,7 @@ input.button {
 
     list-style: none;
 
-    background: url(../img/dots.gif) repeat-x left bottom; 
+    background: url(/media/img/dots.gif) repeat-x left bottom; 
 
     padding: 7px 5px;
 
@@ -697,22 +647,15 @@ input.button {
 }
 
 .sidemenu ul li a, 
-
 .sidemenu ul li a:visited {
-
     font-family: Georgia, 'Times New Roman', Times, Serif;
-
     background-image: none; 
-
     background-color: transparent;
-
     border: none;
-
     color: #506E39;
-
-    padding-left: 0;    
-
-}
+    padding-left: 0;
+    font-size: 120%;
+    }
 
 .sidemenu ul li a span {
 
@@ -721,8 +664,6 @@ input.button {
     font-family: Georgia, 'Times New Roman', Times, Serif;
 
     font-style: normal;
-
-    font-size: 1em;
 
 }
 
@@ -734,47 +675,6 @@ input.button {
 
 
 
-/* featured-post */
-
-.featured-post {
-
-    padding-bottom: 15px;           
-
-}
-
-.featured-post h4 {
-
-    padding: 0;
-
-    margin: 0 15px 0 12px;
-
-    border-bottom: 1px solid #ebebeb;
-
-}
-
-.featured-post h4 a, 
-
-.featured-post h4 a:visited {
-
-    color: #7BA857;
-
-    border: none;
-
-}
-
-.featured-post .post-info {
-
-    margin-left: 0;
-
-    padding-bottom: 5px;
-
-}
-
-.featured-post p {
-
-    padding-top: 0;
-
-}
 
 
 
@@ -962,222 +862,10 @@ input.button {
 
 
 
-/* thumbnails */
 
-p.thumbs{ padding: 10px 0 0 10px; }
 
-.thumbs img { 
-
-    position: relative;
-
-    padding: 8px;
-
-    margin: 5px;
-
-    background: #fafafa;
-
-   border: 1px solid #ddd;  
-
-}
-
-.thumbs img:hover   {
-
-    border: 1px solid #D2D2D2;
-
-    background: #DDD;   
-
-}
-
-.thumbs a:hover { background-color: transparent; border: none }
-
-
-
-/* comments list */
-
-ol.commentlist {
-
-    margin: 12px 10px;
-
-    padding: 0;
-
-    border-style: solid;    
-
-    border-color: #F0F0F0;  
-
-    border-width: 1px 1px 0 1px;
-
-}
-
-.commentlist li {
-
-    margin: 0;
-
-    padding: 10px;
-
-    list-style: none;
-
-    border-bottom: 1px solid #F0F0F0; 
-
-}
-
-.commentlist li cite {
-
-    display: block;
-
-    font-style: normal;
-
-    font-weight: bold;
-
-    padding: 7px;   
-
-}
-
-.commentlist li cite img {
-
-    float: left;
-
-    margin-right: 10px; 
-
-}
-
-.commentlist li cite .comment-data {
-
-    font-size: .8em;
-
-    font-weight: normal;
-
-}
-
-.commentlist li .comment-text {
-
-    clear: both;
-
-    margin: 0; padding: 0;
-
-}
-
-.commentlist li.alt {
-
-    background: #f8f8f8 
-
-}
-
-
-
-/* alignment classes & additional classes*/
-
-.float-left  { float: left; }
-
-.float-right { float: right; }
-
-.align-left  { text-align: left; }
-
-.align-right { text-align: right; }
-
-.no-border { border: none; }
-
-
-
-/* clearing */
-
-.clearer { clear: both; }
-
-.clear {    display:inline-block; }
-
-.clear:after {
-
-    display:block; 
-
-    visibility:hidden; 
-
-    clear:both; 
-
-    height:0; 
-
-    content: "."; 
-
-}
-
-/* WordPress */
-
-.aligncenter,
-
-div.aligncenter {
-
-   display: block;
-
-   margin-left: auto;
-
-   margin-right: auto;
-
-}
-
-
-
-.alignleft {
-
-   float: left;
-
-}
-
-
-
-.alignright {
-
-   float: right;
-
-}
-
-
-
-.wp-caption {
-
-   border: 1px solid #ddd;
-
-   text-align: center;
-
-   background-color: #f3f3f3;
-
-   padding-top: 4px;
-
-   margin: 10px;
-
-   /* optional rounded corners for browsers that support it */
-
-   -moz-border-radius: 3px;
-
-   -khtml-border-radius: 3px;
-
-   -webkit-border-radius: 3px;
-
-   border-radius: 3px;
-
-}
-
-
-
-.wp-caption img {
-
-   margin: 0;
-
-   padding: 0;
-
-   border: 0 none;
-
-}
-
-
-
-.wp-caption p.wp-caption-text {
-
-   font-size: 11px;
-
-   line-height: 17px;
-
-   padding: 0 4px 5px;
-
-   margin: 0;
-
+.document p {
+    font-size: 105%;
 }
 
 
