@@ -1,0 +1,41 @@
+---
+title: Git on AIX
+created: !!timestamp 2012-04-29
+updated: !!timestamp 2012-04-29
+tags:
+  - english
+---
+
+For running Git on AIX my first stop was the RPM provided by
+`Perlz AIX Archive`_. Those RPM are up to date, but they have a big dependency
+list.
+
+Perlz is great for a stable system, but I just wanted to do some quick test
+on a default `IBM VLP`_ AIX system. I was looking for ``ssh`` transport as
+AIX already comes with an old version of OpenSSL.
+
+So I sat down and start compiling Git from source code.
+
+Beside installing the `GNU Make`_ and hacking a script for GNU Install,
+everything went fine.
+
+For your convenience you can get the binary archive from
+`git-1.7.10-aix.tar.gz </downloads/git-1.7.10-aix.tar.gz>`_.
+It is intended to be installed in ``~/.local`` folder. It only supports
+``ssh transport``, no `http or https`.
+
+The recipe for `building git is here`_, and a `dummy GNU Install is here`_.
+
+.. figure:: /media/img/articles/git-cat.jpg
+   :target: `pic`_
+
+   "I HAS MAH OWN MUG, GO GIT UR OWN!" by stratman2
+
+.. _pic: http://www.flickr.com/photos/stratman2/6885807266/
+
+
+.. _Perlz AIX Archive: http://www.perzl.org/aix/index.php?n=Main.Git
+.. _IBM VLP: http://www-304.ibm.com/partnerworld/wps/pub/systems/vlp/index
+.. _GNU Make: http://www.perzl.org/aix/index.php?n=Main.Make
+.. _building git is here: https://github.com/chevah/deps/blob/master/src/chevah-bootstrap/aix/git.sh
+.. _dummy GNU Install is here: https://github.com/chevah/deps/blob/master/src/chevah-bootstrap/aix/install.aix.sh
