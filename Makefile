@@ -10,7 +10,7 @@ DOWNLOADS_FOLDER='downloads'
 
 run: generate
 	rm -rf ${BUILD_FOLDER}/media
-	ln -s ${PWD}/media ${BUILD_FOLDER}media
+	cp -r media ${BUILD_FOLDER}
 	${PYTHON} ${HYDE} serve -d ${BUILD_FOLDER}
 
 
