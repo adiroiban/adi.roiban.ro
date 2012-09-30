@@ -9,8 +9,6 @@ DESTINATION='adi@tla.ro:/home/adi/adi.roiban.ro/'
 DOWNLOADS_FOLDER='downloads'
 
 run: generate
-	rm -rf ${BUILD_FOLDER}/media
-	cp -r media ${BUILD_FOLDER}
 	${PYTHON} ${HYDE} serve -d ${BUILD_FOLDER}
 
 
@@ -22,12 +20,13 @@ deps:
 	virtualenv build -p /usr/bin/python2.7
 	${PYTHON} ${PIP} install docutils
 	${PYTHON} ${PIP} install \
-		-e 'git://github.com/adiroiban/hyde.git#egg=hyde'
+		-e 'git://github.com/chevah/hyde.git#egg=hyde'
 
 
 generate: clean
 	${PYTHON} ${HYDE} gen -r -d ${BUILD_FOLDER}
 	cp -r media ${BUILD_FOLDER}
+
 
 publish: generate
 	rsync -aqcz --delete -e 'ssh' --exclude-from=rsync.exclude \
