@@ -23,6 +23,7 @@ context:
             tagline: Who wipes ?
             url: http://adi.roiban.ro
             source_url: https://github.com/adiroiban/adi.roiban.ro
+            ga: UA-2942924-1
             atom:
                 name: RSS Feeds
                 url: atom.xml
