@@ -1,0 +1,119 @@
+---
+title: Install OpenWRT packages on DD-WRT
+created: !!timestamp 2012-12-01
+updated: !!timestamp 2012-12-01
+tags:
+  - english
+  - free-software
+  - hardware
+---
+
+While I am big fan of OpenWRT, somehow I got fooled by DD-WRT nice Web
+GUI and ease of use.
+
+Being stuck with DD-WRT I am trying to bring the good stuff from OpenWRT...
+I want `netstat` and `nmap` and they are not easily available for DD-WRT.
+
+While looking after an ADSL WIFI Router with support for OpenWRT, I ended
+buying an Buffalo WBMR-HP-G300H.
+After using DD-WRT for a while, the Web UI start crashing and the SSH server
+is recreating the RSA SSH keys at each boot.
+I am using DD-WRT on an Linksys WRT54GS and on Asus WL-500G without any
+problems, so this should be related to the build for this Bufallo device. 
+
+This page is based on `How To Install Additional Software On Your Home Router
+(DD-WRT) from How-To Geek
+<http://www.howtogeek.com/98408/how-to-install-additional-software-on-your-router-dd-wrt/>`_
+
+On the DD-WRT wiki, there is a page called `Optware, the right way` ... but
+it should read "the wrong way".
+
+First think you need to know is the CPU architecture or your router.
+I am using a Buffalo WBMR-HP-G300H so my arch is **ar71xx**. Check the nice
+OpenWRT wiki to find out our CPU arch.
+
+The list of supported architectures for OpenWRT trunk is here:
+http://downloads.openwrt.org/snapshots/trunk/
+
+You will need to enable JFFS on your router. I am using ``/opt`` folder as
+the root of the new OpenWRT filesystem and OpenWRT tools as an USB stick is
+mounted there. Feel free to replace it with any other folder.
+
+Get the OpenWRT base filesystem and copy the libraries in /opt::
+
+    cd /jffs/tmp
+    wget http://downloads.openwrt.org/snapshots/trunk/ar71xx/openwrt-ar71xx-generic-rootfs.tar.gz
+    tar -xzr openwrt-*-generic-rootfs.tar.gz
+    mv lib /opt
+
+We would need writable /etc and /var folders. As a start, copy the DD-WRT
+``/etc`` folder into /opt/etc and ``/var`` into /opt/var . ``/etc`` contains 
+a few symlinks to tmp files and we need to remove them and replace them
+with proper files. DD-WRT's var is in /tmp/var ::
+
+    cp -r /etc /opt
+    cp -r /tmp/var /opt
+    rm /opt/etc/group
+    rm /opt/etc/passwd
+    rm /opt/etc/resolv.conf
+    rm /opt/etc/hosts
+    cp /tmp/hosts /opt/etc/hosts
+    cp /tmp/etc/group /opt/etc/group
+    cp /tmp/etc/passwd /opt/etc/passwd
+    cp /tmp/resolv.conf /opt/etc/resolv.conf
+    ...
+    Remove any other symplinks found in /opt/etc and /opt/var
+
+After the ``/opt/etc`` and ``/opt/var`` folders are cleaned, we can put them
+in use::
+
+    mount -o bind /opt/etc /etc
+    mount -o bind /opt/var /tmp/var
+
+Get and install OpenWRT's package manager, ``opkg`` for you CPU. Most probably
+opkg will be installed somewhere in ``/jffs`` but can me moved in your
+prefered location::
+
+    cd /jffs/tmp
+    wget http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages/opkg_618-3_ar71xx.ipk
+    ipkg install opkg*.ipk
+    rm opkg*.ipk
+    mv /jffs/bin/opkg /opt/bin/
+    mv /jffs/etc/opkg.conf /opt/etc/
+
+Now we can configure ``opkg`` to work with our writable folders, by editing
+``/etc/opkg.conf`` to look like::
+
+    src/gz snapshots http://downloads.openwrt.org/snapshots/trunk/ar71xx/packages
+    dest root /opt
+    dest ram /opt/tmp
+    lists_dir ext /opt/var/opkg-lists
+    option overlay_root /overlay
+
+Since not all libraries from DD-WRT are compatible with OpenWRT, you would
+need to instruct the shell to use OpenWRT libraries first. Add the following
+in your terminal and ~/.profile file::
+
+    export LD_LIBRARY_PATH='/opt/lib:/opt/usr/lib'
+
+Everything should be ok now, and ``opkg update``, ``opkg list`` and
+``opkg install netstat`` should be functional.
+
+The last step is to add a startup script that will mount the writable
+partations at each boot. Create a file in
+``/jffs/etc/config/open-wrt-init.startup`` with the follwing commands::
+
+    mount -o bind /opt/etc /etc
+    mount -o bind /opt/var /tmp/var
+
+Enjoy the compiled tools provided by OpenWRT!
+
+Play with the new /etc/passwd file and create a proper home for your root
+account... /opt/root should fit.
+
+.. figure:: /media/img/articles/2012/cat-confuse.jpg
+   :target: `pic`_
+
+   "I HATE YOU" by By Jess and Colin
+
+.. _pic: http://www.flickr.com/photos/jessandcolin/2728096511/in/photostream/
