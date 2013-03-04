@@ -1,0 +1,46 @@
+---
+title: Server for GitHub Web Hooks Service
+created: !!timestamp 2013-03-04
+updated: !!timestamp 2013-03-04
+tags:
+  - english
+  - free-software
+---
+
+While GitHub is a nice for small projects,
+it fails to manage medium to large projects. 
+Email notification system is just spam and while pull request system is
+implemented on top of "issues management" you can not attach tags / fields
+or other state related markers.
+
+With more than I few pull request, I found it hard to track who is assigned
+for a pull request, who should review a pull request and what is the current
+progress of a pull request.
+
+All is not lost, since GitHub comes with a nice API.
+
+Scratching my own itch I ended up writing a `server to receive GitHub
+notification and implement my own notification and action rules
+<https://github.com/chevah/txghserf>`_.
+
+It comes with a simple webserver to receive GitHub Web Hooks and a simple
+JS GUI to manage web hooks. Webserver is Python Twisted Klein, and GUI is
+AngularJS.
+
+Here is a quick preview:
+
+
+.. figure:: /media/img/articles/2013/txghserf.jpg
+   :target: `txghserf`_
+
+Chech the code on `GitHub txghserf project page
+<https://github.com/chevah/txghserf>`_. Any comment or suggestion is much
+appreciated.
+
+.. figure:: /media/img/articles/2013/cat-hook.jpg
+   :target: `pic`_
+
+   "Hook Line n Sinker" by Tomi Tapio
+
+.. _pic: http://www.flickr.com/photos/tomitapio/6109795663/
+.. _txghserf: https://github.com/chevah/txghserf
